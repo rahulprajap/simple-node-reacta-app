@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         PATH = "$PATH:/home/rahul/.nvm/versions/node/v21.1.0/bin"
     }
@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'npm install --unsafe-perm node-sass'
             }
         }
     }
