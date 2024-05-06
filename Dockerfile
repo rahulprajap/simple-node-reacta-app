@@ -1,15 +1,8 @@
 
-FROM node:21-alpine
-
+FROM node:apline
 WORKDIR /app
-
-COPY package*.json  .
-
-USER node
-
+COPY .package*.json .
 RUN npm install
+COPY . .
 
-COPY  . .
-
-
-CMD [ "node", "app.js" ]
+CMD ["npm", "run", "start"]
