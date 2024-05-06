@@ -3,7 +3,7 @@ FROM node:21-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json  .
 
 USER node
 
