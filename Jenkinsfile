@@ -1,7 +1,13 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image :"node:21-alpine"
+            arg "-p 3000:3000"
+        }
+    }
+    
     environment {
-        CI = 'true'
+        PATH = "$PATH://home/rahul/.nvm/versions/node/v21.1.0/bin/"
     }
     stages {
         stage('Build') {
