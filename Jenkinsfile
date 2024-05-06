@@ -11,8 +11,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'sudo chown -R 127:140 "/.npm'
                 sh 'npm install'
-                sh  'sudo chown -R 127:140 "/.npm'
+                
             }
         }
         stage('Test') {
