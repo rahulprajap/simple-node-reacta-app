@@ -1,12 +1,30 @@
 pipeline {
-    agent any // You can also use 'agent none' if you want to define an agent later in the stages
-
+    agent {
+        docker {
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        CI = 'true'
+    }
     stages {
+        stage('Build') {
             steps {
-                sh 'npm install' // Install Node.js dependencies
-                sh 'npm run build' // Build the React application
+                sh 'npm install'
             }
         }
-        // Add more stages for testing, deploying, etc.
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
+            }
+        }
     }
-
+}
