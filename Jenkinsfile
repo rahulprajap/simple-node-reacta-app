@@ -1,9 +1,7 @@
 pipeline {
-    docker {
-        image:'node:21-alpine'
-        arg:"-p 3000:3000"
+    agent {
+        docker { image 'node:20.11.1-alpine3.19' }
     }
-    
     stages {
         stage('Build And Run') {
             step{
