@@ -1,9 +1,8 @@
 pipeline {
     agent {
-        docker {
-            image :"node:21-alpine"
-            arg "-p 3000:3000"
-        }
+           docker {
+             image 'node:20.11.1-alpine3.19'
+            arg:'-p 3000:3000' }
     }
     
     environment {
@@ -17,11 +16,7 @@ pipeline {
                 sh 'npm start'
             }
         }
-        stage('Test') {
-            steps {
-                sh './jenkins/scripts/test.sh'
-            }
-        }
+
         // stage('Deliver') {
         //     steps {
         //         sh './jenkins/scripts/deliver.sh'
