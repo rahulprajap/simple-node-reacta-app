@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm config set user 0'
-                sh ' npm config set unsafe-perm true'
+                sh 'npm config set unsafe-perm true'
                 sh 'npm install'
                
                 
