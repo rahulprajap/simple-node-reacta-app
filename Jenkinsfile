@@ -4,6 +4,7 @@ pipeline {
             image 'node:14' 
             args '-u root -p 3000:3000'
     }
+}
     stages {
         stage('Build') {
             steps {
@@ -12,5 +13,4 @@ pipeline {
         }
         // Add more stages for testing, deploying, etc.
     }
-}
 }
