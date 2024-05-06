@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo chown -R $USER:$(id -gn $USER) ~/.npm'
-                sh 'npm install'
+                sh 'chown -R $USER:$(id -gn $USER) ~/.npm'
+                sh 'npm -g install'
                
                 
             }
