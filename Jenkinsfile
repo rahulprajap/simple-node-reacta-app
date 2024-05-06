@@ -8,8 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm config set user 0'
-                sh 'npm config set unsafe-perm true'
+                sh 'sudo chown -R $USER:$(id -gn $USER) ~/.npm'
                 sh 'npm install'
                
                 
